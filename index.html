@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Shopping</title>
+    <style>
+        /* Reset default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Search bar */
+        #searchBar {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        /* Product cards */
+        .product-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .product-card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .product-card p {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .product-card button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .product-card button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Cart */
+        #cart {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        #cart h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        #cart ul {
+            list-style: none;
+            margin-bottom: 10px;
+        }
+
+        #totalPrice {
+            font-weight: bold;
+        }
+
+        #cart button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #cart button:hover {
+            background-color: #218838;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Fashion Shopping</h1>
+        <!-- Search bar -->
+        <label for="searchBar">Search for products:</label>
+        <input type="text" id="searchBar" placeholder="Enter keywords...">
+        <div class="product-card">
+            <img src="product1.jpg" alt="Product 1">
+            <h3>Product 1</h3>
+            <p>Price: $50</p>
+            <button onclick="addToCart(50)">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <img src="product2.jpg" alt="Product 2">
+            <h3>Product 2</h3>
+            <p>Price: $55</p>
+            <button onclick="addToCart(55)">Add to Cart</button>
+        </div>
+      <div class="product-card">
+            <img src="product3.jpg" alt="Product 3">
+            <h3>Product 3</h3>
+            <p>Price: $45</p>
+            <button onclick="addToCart(45)">Add to Cart</button>
+        </div>
+      <div class="product-card">
+            <img src="product4.jpg" alt="Product 4">
+            <h3>Product 4</h3>
+            <p>Price: $99</p>
+            <button onclick="addToCart(99)">Add to Cart</button>
+        </div>
+      <div class="product-card">
+            <img src="product5.jpg" alt="Product 5">
+            <h3>Product 5</h3>
+            <p>Price: $89</p>
+            <button onclick="addToCart(89)">Add to Cart</button>
+        </div>
+      <div class="product-card">
+            <img src="product6.jpg" alt="Product 6">
+            <h3>Product 6</h3>
+            <p>Price: $49</p>
+            <button onclick="addToCart(49)">Add to Cart</button>
+        </div>
+      <div class="product-card">
+            <img src="product7.jpg" alt="Product 7">
+            <h3>Product 7</h3>
+            <p>Price: $59</p>
+            <button onclick="addToCart(59)">Add to Cart</button>
+        </div>
+      <div class="product-card">
+            <img src="product8.jpg" alt="Product 8">
+            <h3>Product 8</h3>
+            <p>Price: $79</p>
+            <button onclick="addToCart(79)">Add to Cart</button>
+        </div>
+        <!-- Cart -->
+        <div id="cart">
+            <h2>Cart</h2>
+            <ul id="cartItems"></ul>
+            <p>Total Price: <span id="totalPrice">$0</span></p>
+            <button onclick="checkout()">Checkout</button>
+        </div>
+    </div>
+    </div>
+    <script>
+        const cartItems = [];
+        let totalPrice = 0;
+
+        function addToCart(price) {
+            cartItems.push(price);
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartList = document.getElementById("cartItems");
+            cartList.innerHTML = "";
+            totalPrice = 0;
+            for (const item of cartItems) {
+                const li = document.createElement("li");
+                li.textContent = `$${item}`;
+                cartList.appendChild(li);
+                totalPrice += item;
+            }
+            document.getElementById("totalPrice").textContent = `$${totalPrice}`;
+        }
+
+        function checkout() {
+            alert(`Thank you for shopping! Your total is $${totalPrice}.`);
+            cartItems.length = 0;
+            updateCart();
+        }
+    </script>
+</body>
+</html>
